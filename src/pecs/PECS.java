@@ -9,7 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * PECS原则:生产者(Producer)使用 <? extends T>,消费者(Consumer)使用 <? super T>
+ * PECS原则:生产者(Producer)使用 <? extends T>,消费者(Consumer)使用 <? super T>（这里的生产者和消费者是相对容器而言的）
+ * - 从集合中取元素, 使用<? extends T>通配符——list 作为生产者，我们可以从 list 中消费 T
+ *      -避免调用者向此容器内写入数据，只能读取里面的数据
+ * - 向集合中放元素, 使用 <? super T> 通配符——list 作为消费者，我们可以放入 T 到 list 中
+ *      -可以向此容器写入数据，读取时无法确定类型只能用 Object 接收
  */
 public class PECS {
     public static void main(String[] args) {
